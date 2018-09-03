@@ -7,6 +7,7 @@
       <th>Id</th>
       <th>Name</th>
       <th>Description</th>
+      <th>Details</th>
       </tr>
       </thead>
       <tbody>
@@ -14,6 +15,7 @@
           <td>{{venue.id}}</td>
           <td>{{venue.name}}</td>
           <td>{{venue.description}}</td>
+          <td><a routerLink="/venues/{{venue.id}}">Detail</a></td>
         </tr>
       </tbody>
     </table>

@@ -14,4 +14,9 @@ export class VenueService {
     return this.httpClient.get<IVenue[]>(url);
   }
 
+  getVenue(id: number): Observable<IVenue> {
+    let url = `/api/venues/` + id;
+    return this.httpClient.get<IVenue>(url);
+  }
+
 }

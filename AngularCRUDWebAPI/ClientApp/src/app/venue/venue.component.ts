@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IVenue } from '../models/venue.model';
 import { VenueService } from './venue.service';
+import { router } from '@angular/router';
 
 @Component({
   selector: 'app-venue',

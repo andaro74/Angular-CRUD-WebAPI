@@ -5,16 +5,13 @@ using System.Threading.Tasks;
 using AngularCRUDWebAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace AngularCRUDWebAPI.Controllers
 {
     [Route("api/[controller]")]
     public class VenuesController : Controller
     {
-        
-        [HttpGet]
-        public async Task<IActionResult> Get()
+        private List<VenueItem> venues;
+        public VenuesController()
         {
             VenueItem venue = new VenueItem
             {
@@ -28,35 +25,45 @@ namespace AngularCRUDWebAPI.Controllers
                 City = "Los Angeles",
                 State = "CA",
                 Zip = "90068",
+                Country = "USA",
+                PhotoUrl = ""
+            };
+
+            VenueItem venue2 = new VenueItem
+            {
+                Id = 2,
+                Name = "Staples Center",
+                Description = "Multi-purpose Arena",
+                Website = "https://www.staplescenter.com/",
+                Phone = "(213) 742-7100",
+                Email = "contact@staples.com",
+                Street = "1111 S Figueroa St",
+                City = "Los Angeles",
+                State = "CA",
+                Zip = "90014",
                 Country = "USA",
                 PhotoUrl = ""
             };
 
             var venueList = new List<VenueItem>();
             venueList.Add(venue);
-            return Ok(venueList);
+            venueList.Add(venue2);
+            venues = venueList;
+        }
+
+
+        [HttpGet]
+        public async Task<IActionResult> Get()
+        {
+           
+            return Ok(venues);
         }
 
 
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            VenueItem venue = new VenueItem
-            {
-                Id = 1,
-                Name = "Hollywood Bowl",
-                Description = "Concert Hall",
-                Website = "hollywoodbowl.com",
-                Phone = "(323) 850-2000",
-                Email = "contact@hollywoodbowl.com",
-                Street = "2301 N Highland Ave",
-                City = "Los Angeles",
-                State = "CA",
-                Zip = "90068",
-                Country = "USA",
-                PhotoUrl = ""
-            };
-
+            var venue=venues.Where(x => x.Id == id);
            
             return Ok(venue);
         }
