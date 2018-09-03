@@ -1,7 +1,15 @@
-import { IContactinfo } from "./contactinfo.model";
 
 export interface IVenue {
   id: number;
+  name: string;
   description: string;
-  contactInfo: IContactinfo;
+  website: string;
+  phone: string;
+  email: string;
+  photoUrl: string;
+  street: string;
+  city: string;
+  state: string;
+  zip: string;
+  country: string;
 }

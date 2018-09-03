@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IVenue } from '../models/venue.model';
+import { VenueService } from './venue.service';
 
 @Component({
   selector: 'app-venue',
@@ -8,34 +9,30 @@ import { IVenue } from '../models/venue.model';
 })
 export class VenueComponent implements OnInit {
 
-  public venue: IVenue;
+  public venues: IVenue[];
 
-  constructor() {
-    this.venue = {
-      id: 1,
-      description: "Concert Hall",
-      contactInfo: {
-        firstname: "",
-        lastname: "",
-        website: "hollywoodbowl.com",
-        businessName: "Hollywood Bowl",
-        phone: "(323) 850-2000",
-        email: "contact@hollywoodbowl.com",
-        address: {
-          street: "2301 N Highland Ave",
-          city: "Los Angeles",
-          state: "CA",
-          zip: "90068",
-          country: "USA"
-        }
-      }
-    
-    };
-    
+  constructor(private service: VenueService) {
+    //this.venue = {
+    //  id: 1,
+    //  name: "Hollywood Bowl",
+    //  description: "Concert Hall",
+    //  website: "hollywoodbowl.com",
+    //  phone: "(323) 850-2000",
+    //  email: "contact@hollywoodbowl.com",
+    //  street: "2301 N Highland Ave",
+    //  city: "Los Angeles",
+    //  state: "CA",
+    //   zip: "90068",
+    //  country: "USA",
+    //  photoUrl:""
+    //};
+
   }
 
   ngOnInit() {
-
+    this.service.getVenues().subscribe(venues => {
+      this.venues = venues;
+    })
   }
 
 }

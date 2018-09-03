@@ -25,10 +25,16 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\app\app.routes.ts" />
+    <None Remove="ClientApp\src\app\models\configuration.model.ts" />
   </ItemGroup>
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\app\app.routes.ts" />
+    <TypeScriptCompile Include="ClientApp\src\app\models\configuration.model.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ClientApp\src\app\services\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

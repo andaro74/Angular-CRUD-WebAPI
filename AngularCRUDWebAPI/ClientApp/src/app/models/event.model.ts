@@ -1,6 +1,6 @@
 import { IVenue } from "./venue.model";
-import { Entertainer } from "./entertainer.model";
-import { Customer } from "./customer.model";
+import { IEntertainer } from "./entertainer.model";
+import { ICustomer } from "./customer.model";
 
 export class Event {
   id: number;
@@ -8,7 +8,9 @@ export class Event {
   description: string;
   date: Date;
   venue: IVenue;
-  entertainer: Entertainer;
-  customer: Customer;
+  entertainer: IEntertainer;
+  customer: ICustomer;
+  guests: number;
+  deposit: number;
   price: number;
 }
