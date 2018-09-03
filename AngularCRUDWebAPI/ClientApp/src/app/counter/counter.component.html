@@ -5,3 +5,8 @@
 <p>Current count: <strong>{{ currentCount }}</strong></p>
 
 <button (click)="incrementCounter()">Increment</button>
+<p>Little Heroes</p>
+<input #newHero (keyup.enter)="addHero(newHero.value); newHero.value=''" (blur)="addHero(newHero.value); newHero.value=''"/>
+<ul>
+  <li *ngFor="let hero of heroes">{{hero}}</li>
+</ul>
