@@ -27,6 +27,13 @@ export class VenueDetailComponent implements OnInit {
     })
   }
 
+  onSubmit() {
+    this.service.updateVenue(this.venue).subscribe(venue => {
+      console.log("Updated " + venue.id);
+      this.venue = venue;
+    })
+  }
+
   cancel() {
     this.location.back();
   }

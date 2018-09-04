@@ -68,29 +68,20 @@ namespace AngularCRUDWebAPI.Controllers
             return Ok(venue);
         }
 
-        //// GET api/<controller>/5
-        //[HttpGet("{id}")]
-        //public string Get(int id)
-        //{
-        //    return "value";
-        //}
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(int id,[FromBody] VenueItem venueItem)
+        {
+            venueItem.Name += " modified";
+            venueItem.Description += " modified";
 
-        //// POST api/<controller>
-        //[HttpPost]
-        //public void Post([FromBody]string value)
-        //{
-        //}
+            return Ok(venueItem);
+        }
 
-        //// PUT api/<controller>/5
-        //[HttpPut("{id}")]
-        //public void Put(int id, [FromBody]string value)
-        //{
-        //}
+        public async Task<IActionResult> Post([FromBody] VenueItem venueItem)
+        {
+            return Ok();
+        }
 
-        //// DELETE api/<controller>/5
-        //[HttpDelete("{id}")]
-        //public void Delete(int id)
-        //{
-        //}
+        
     }
 }
