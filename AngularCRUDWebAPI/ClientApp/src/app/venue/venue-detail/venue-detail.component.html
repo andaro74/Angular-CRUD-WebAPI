@@ -1,3 +1,45 @@
-<p>
-  venue-detail works!
-</p>
+<div class="row">
+  <div class="col-md-8 order-md-1">
+    <h1>{{venue.name}}</h1>
+    <form>
+      <div class="form-group col-md-6">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" required [(ngModel)]="venue.name" name="name" />
+      </div>
+      <div class="form-group col-md-6">
+        <label for="description">Description</label>
+        <input type="text" class="form-control" id="description" [(ngModel)]="venue.description" name="description" />
+      </div>
+      <div class="form-group col-md-4">
+        <label for="website">Website</label>
+        <input type="text" class="form-control" id="website" [(ngModel)]="venue.website" name="website" />
+      </div>
+      <div class="form-group col-md-4">
+        <label for="phone">Phone</label>
+        <input type="text" class="form-control" id="phone" [(ngModel)]="venue.phone" name="phone" />
+      </div>
+      <div class="form-group col-md-4">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email" [(ngModel)]="venue.email" name="email" />
+      </div>
+      <div class="form-group  col-md-12">
+        <label for="street">Street</label>
+        <input type="text" class="form-control" id="street" [(ngModel)]="venue.street" name="street" />
+      </div>
+      <div class="form-group col-md-4">
+        <label for="city">City</label>
+        <input type="text" class="form-control" id="city" [(ngModel)]="venue.city" name="city" />
+      </div>
+      <div class="form-group col-md-4">
+        <label for="state">State</label>
+        <input type="text" class="form-control" id="state" [(ngModel)]="venue.state" name="state" />
+      </div>
+      <div class="form-group col-md-4">
+        <label for="zip">Zip</label>
+        <input type="text" class="form-control" id="zip" [(ngModel)]="venue.zip" name="zip" />
+      </div>
+      <button type="button" class="btn" (click)="cancel()">Back</button>
+      <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+  </div>
+</div>

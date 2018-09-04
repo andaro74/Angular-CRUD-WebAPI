@@ -63,7 +63,7 @@ namespace AngularCRUDWebAPI.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> Get(int id)
         {
-            var venue=venues.Where(x => x.Id == id);
+            var venue=venues.Where(x => x.Id == id).FirstOrDefault();
            
             return Ok(venue);
         }

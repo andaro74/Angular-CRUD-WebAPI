@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IVenue } from '../../models/venue.model';
 import { VenueService } from '../venue.service';
 import { ActivatedRoute } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-venue-detail',
@@ -10,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class VenueDetailComponent implements OnInit {
   venue: IVenue;
-  constructor(private service:VenueService, private route:ActivatedRoute) { }
+  constructor(private service:VenueService, private route:ActivatedRoute, private location:Location) { }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
@@ -24,6 +25,10 @@ export class VenueDetailComponent implements OnInit {
     this.service.getVenue(id).subscribe(venue => {
       this.venue = venue;
     })
+  }
+
+  cancel() {
+    this.location.back();
   }
 
 }
