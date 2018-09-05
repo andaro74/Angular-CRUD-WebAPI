@@ -5,12 +5,16 @@ using System.Threading.Tasks;
 
 namespace AngularCRUDWebAPI.Models
 {
-    public class VenueItem
+    public class Venue
     {
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        
+
+        public string ContactFirstName { get; set; }
+
+        public string ContactLastName { get; set; }
+
         public string Website { get; set; }
 
         public string Phone { get; set; }

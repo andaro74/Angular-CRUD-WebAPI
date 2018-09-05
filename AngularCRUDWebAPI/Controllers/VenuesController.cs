@@ -10,10 +10,10 @@ namespace AngularCRUDWebAPI.Controllers
     [Route("api/[controller]")]
     public class VenuesController : Controller
     {
-        private List<VenueItem> venues;
+        private List<Venue> venues;
         public VenuesController()
         {
-            VenueItem venue = new VenueItem
+            Venue venue = new Venue
             {
                 Id = 1,
                 Name = "Hollywood Bowl",
@@ -29,7 +29,7 @@ namespace AngularCRUDWebAPI.Controllers
                 PhotoUrl = ""
             };
 
-            VenueItem venue2 = new VenueItem
+            Venue venue2 = new Venue
             {
                 Id = 2,
                 Name = "Staples Center",
@@ -45,7 +45,7 @@ namespace AngularCRUDWebAPI.Controllers
                 PhotoUrl = ""
             };
 
-            var venueList = new List<VenueItem>();
+            var venueList = new List<Venue>();
             venueList.Add(venue);
             venueList.Add(venue2);
             venues = venueList;
@@ -69,7 +69,7 @@ namespace AngularCRUDWebAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id,[FromBody] VenueItem venueItem)
+        public async Task<IActionResult> Put(int id,[FromBody] Venue venueItem)
         {
             venueItem.Name += " modified";
             venueItem.Description += " modified";
@@ -77,7 +77,7 @@ namespace AngularCRUDWebAPI.Controllers
             return Ok(venueItem);
         }
 
-        public async Task<IActionResult> Post([FromBody] VenueItem venueItem)
+        public async Task<IActionResult> Post([FromBody] Venue venueItem)
         {
             return Ok();
         }
