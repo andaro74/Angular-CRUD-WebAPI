@@ -5,15 +5,17 @@ import { VenueComponent } from './venue.component';
 import { VenueService } from './venue.service';
 import { VenueDetailComponent } from './venue-detail/venue-detail.component';
 import { RouterModule } from '@angular/router';
+import { MaterialModule } from './../modules/material.module';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    MaterialModule
   ],
   declarations: [VenueComponent, VenueDetailComponent],
   providers: [VenueService],
-  exports: [RouterModule, FormsModule]
+  exports: [RouterModule, FormsModule, MaterialModule]
 })
 export class VenueModule { }

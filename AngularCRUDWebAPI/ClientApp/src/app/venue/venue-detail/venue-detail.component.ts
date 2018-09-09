@@ -3,6 +3,7 @@ import { IVenue } from '../../models/venue.model';
 import { VenueService } from '../venue.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
+import { MaterialModule } from './../../modules/material.module';
 
 @Component({
   selector: 'app-venue-detail',

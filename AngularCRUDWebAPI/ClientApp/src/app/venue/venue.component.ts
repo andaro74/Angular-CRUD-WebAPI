@@ -10,6 +10,8 @@ import { VenueService } from './venue.service';
 export class VenueComponent implements OnInit {
 
   public venues: IVenue[];
+  
+   displayedColumns: string[] = ['id', 'name', 'description'];
 
   constructor(private service: VenueService) {
     //this.venue = {
