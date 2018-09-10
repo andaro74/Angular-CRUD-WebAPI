@@ -15,6 +15,7 @@ export class VenueDetailComponent implements OnInit {
   constructor(private service:VenueService, private route:ActivatedRoute, private location:Location) { }
 
   ngOnInit() {
+  this.venue=<IVenue>{};
     this.route.params.subscribe(params => {
       let id = +params['id'];
       this.getVenue(id);

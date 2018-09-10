@@ -3,6 +3,9 @@
   margin-right: 8px;
 }
 
+.input-spacing {
+  margin:8px;
+}
 
 .example-container {
   display: flex;
