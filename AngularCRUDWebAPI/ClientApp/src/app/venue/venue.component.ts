@@ -11,7 +11,7 @@ export class VenueComponent implements OnInit {
 
   public venues: IVenue[];
   
-   displayedColumns: string[] = ['id', 'name', 'description'];
+   displayedColumns: string[] = ['id', 'name', 'description', 'select'];
 
   constructor(private service: VenueService) {
     //this.venue = {

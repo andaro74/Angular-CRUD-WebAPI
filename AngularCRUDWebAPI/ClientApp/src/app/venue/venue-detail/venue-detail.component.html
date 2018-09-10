@@ -1,48 +1,50 @@
-<div class="row">
-  <div class="col-md-8 order-md-1">
-    <h1>{{venue.name}}</h1>
-    <form (ngSubmit)="onSubmit()" #venueForm="ngForm">
-      <div class="form-group col-md-6">
+<mat-card>
+  <mat-card-title>
+    <span>{{venue.name}}</span>
+  </mat-card-title>
+  <mat-card-content>
+    <form (ngSubmit)="onSubmit()" #venueForm="ngForm" class="example-container">
+      <mat-form-field>
         <label for="name">Name</label>
-        <input type="text" class="form-control" id="name" required [(ngModel)]="venue.name" name="name" />
-      </div>
-      <div class="form-group col-md-6">
+        <input type="text" matInput id="name" required [(ngModel)]="venue.name" name="name" />
+      </mat-form-field>
+      <mat-form-field>
         <label for="description">Description</label>
-        <input type="text" class="form-control" id="description" [(ngModel)]="venue.description" name="description" />
-      </div>
-      <div class="form-group col-md-4">
+        <input type="text" matInput id="description" [(ngModel)]="venue.description" name="description" />
+      </mat-form-field>
+      <mat-form-field>
         <label for="website">Website</label>
-        <input type="text" class="form-control" id="website" [(ngModel)]="venue.website" name="website" />
-      </div>
-      <div class="form-group col-md-4">
+        <input type="text" matInput id="website" [(ngModel)]="venue.website" name="website" />
+      </mat-form-field>
+      <mat-form-field>
         <label for="phone">Phone</label>
-        <input type="text" class="form-control" id="phone" [(ngModel)]="venue.phone" name="phone" />
-      </div>
-      <div class="form-group col-md-4">
+        <input type="text" matInput id="phone" [(ngModel)]="venue.phone" name="phone" />
+      </mat-form-field>
+      <mat-form-field>
         <label for="email">Email</label>
-        <input type="text" class="form-control" id="email" [(ngModel)]="venue.email" name="email" />
-      </div>
-      <div class="form-group  col-md-12">
+        <input type="text" matInput id="email" [(ngModel)]="venue.email" name="email" />
+      </mat-form-field>
+      <mat-form-field>
         <label for="street">Street</label>
-        <input type="text" class="form-control" id="street" [(ngModel)]="venue.street" name="street" />
-      </div>
-      <div class="form-group col-md-4">
+        <input type="text" matInput id="street" [(ngModel)]="venue.street" name="street" />
+      </mat-form-field>
+      <mat-form-field>
         <label for="city">City</label>
-        <input type="text" class="form-control" id="city" [(ngModel)]="venue.city" name="city" />
-      </div>
-      <div class="form-group col-md-4">
+        <input type="text" matInput id="city" [(ngModel)]="venue.city" name="city" />
+      </mat-form-field>
+      <mat-form-field>
         <label for="state">State</label>
-        <input type="text" class="form-control" id="state" [(ngModel)]="venue.state" name="state" />
-      </div>
-      <div class="form-group col-md-4">
+        <input type="text" matInput id="state" [(ngModel)]="venue.state" name="state" />
+      </mat-form-field>
+      <mat-form-field>
         <label for="zip">Zip</label>
-        <input type="text" class="form-control" id="zip" [(ngModel)]="venue.zip" name="zip" />
-      </div>
-      <div class="form-group col-md-6">
+        <input type="text" matInput id="zip" [(ngModel)]="venue.zip" name="zip" />
+      </mat-form-field>
+      <mat-form-field>
         <button mat-stroked-button class="btn" (click)="cancel()">Back</button>
         <button type="submit" mat-stroked-button color="primary" [disabled]="!venueForm.form.valid">Save</button>
 
-      </div>
+      </mat-form-field>
     </form>
-  </div>
-</div>
+    </mat-card-content>
+</mat-card>
