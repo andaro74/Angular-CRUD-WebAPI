@@ -1,57 +1,59 @@
+<mat-card>
+  <mat-card-title>
+    Venues
+    </mat-card-title>
+    <!--<div class="table-responsive">
+    <table class="table table-striped table-sm">
+      <thead>
+        <tr>
+          <th>Id</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let venue of venues">
+          <td>{{venue.id}}</td>
+          <td>{{venue.name}}</td>
+          <td>{{venue.description}}</td>
+          <td><a routerLink="/venues/{{venue.id}}">Detail</a></td>
+        </tr>
+      </tbody>
+    </table>
 
-<h2>Venues</h2>
-<div class="table-responsive">
-  <table class="table table-striped table-sm">
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Details</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let venue of venues">
-        <td>{{venue.id}}</td>
-        <td>{{venue.name}}</td>
-        <td>{{venue.description}}</td>
-        <td><a routerLink="/venues/{{venue.id}}">Detail</a></td>
-      </tr>
-    </tbody>
-  </table>
+  </div>-->
+    <table mat-table [dataSource]="venues" class="mat-elevation-z8">
 
-</div>
-<table mat-table [dataSource]="venues" class="mat-elevation-z8">
+      <!-- Id Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id. </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+        <!--<td mat-cell *matCellDef="let element"><a routerLink="/venues/{{element.id}}">Detail</a></td>-->
+      </ng-container>
 
-  <!-- Id Column -->
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef> Id. </th>
-    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-    <!--<td mat-cell *matCellDef="let element"><a routerLink="/venues/{{element.id}}">Detail</a></td>-->
-  </ng-container>
+      <!-- Name Column -->
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
 
-  <!-- Name Column -->
-    <ng-container matColumnDef="name">
-      <th mat-header-cell *matHeaderCellDef> Name </th>
-      <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-    </ng-container>
+      <!-- Description Column -->
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+      </ng-container>
 
-    <!-- Description Column -->
-    <ng-container matColumnDef="description">
-      <th mat-header-cell *matHeaderCellDef> Description </th>
-      <td mat-cell *matCellDef="let element"> {{element.description}} </td>
-    </ng-container>
-
-    <!-- Select Column
-  <ng-container matColumnDef="select">
-    <th mat-header-cell *matHeaderCellDef> Select </th>
-    <td mat-cell *matCellDef="let element"><a routerLink="/venues/{{element.id}}">Detail</a></td>
-  </ng-container>-->
+      <!-- Select Column
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef> Select </th>
+      <td mat-cell *matCellDef="let element"><a routerLink="/venues/{{element.id}}">Detail</a></td>
+    </ng-container>-->
 
 
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
-
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</mat-card>
 
 
