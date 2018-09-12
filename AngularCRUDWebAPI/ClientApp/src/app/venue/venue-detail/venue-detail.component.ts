@@ -46,7 +46,10 @@ export class VenueDetailComponent implements OnInit {
       console.log("Updated " + venue.id);
       this.venue = venue;
     });
+    
+    
     }
+    this.location.back();
   }
 
   cancel() {

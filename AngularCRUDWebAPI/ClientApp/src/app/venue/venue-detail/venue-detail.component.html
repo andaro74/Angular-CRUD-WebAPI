@@ -6,40 +6,40 @@
       <form (ngSubmit)="onSubmit()" #venueForm="ngForm">
         <input type="hidden" [(ngModel)]="venue.id" name="id" />
         <mat-form-field class="input-spacing">
-          <label for="name">Name</label>
-          <input type="text" matInput id="name" required [(ngModel)]="venue.name" name="name" />
+
+          <input type="text" matInput id="name" required [(ngModel)]="venue.name" name="name" placeholder="Venue Name" />
         </mat-form-field>
         <mat-form-field class="input-spacing">
-          <label for="description">Description</label>
-          <input type="text" matInput id="description" [(ngModel)]="venue.description" name="description" />
+
+          <input type="text" matInput id="description" [(ngModel)]="venue.description" name="description" placeholder="Venue Description" />
         </mat-form-field>
         <mat-form-field class="input-spacing">
-          <label for="website">Website</label>
-          <input type="text" matInput id="website" [(ngModel)]="venue.website" name="website" />
+
+          <input type="text" matInput id="website" [(ngModel)]="venue.website" name="website" placeholder="Website"/>
         </mat-form-field>
         <mat-form-field class="input-spacing">
-          <label for="phone">Phone</label>
-          <input type="text" matInput id="phone" [(ngModel)]="venue.phone" name="phone" />
+
+          <input type="text" matInput id="phone" [(ngModel)]="venue.phone" name="phone" placeholder="Phone Number"/>
         </mat-form-field>
         <mat-form-field class="input-spacing">
-          <label for="email">Email</label>
-          <input type="text" matInput id="email" [(ngModel)]="venue.email" name="email" />
+
+          <input type="text" matInput id="email" [(ngModel)]="venue.email" name="email" placeholder="Email" />
         </mat-form-field>
         <mat-form-field class="input-spacing">
-          <label for="street">Street</label>
-          <input type="text" matInput id="street" [(ngModel)]="venue.street" name="street" />
+
+          <input type="text" matInput id="street" [(ngModel)]="venue.street" name="street" placeholder="Street"/>
         </mat-form-field>
         <mat-form-field class="input-spacing">
-          <label for="city">City</label>
-          <input type="text" matInput id="city" [(ngModel)]="venue.city" name="city" />
+
+          <input type="text" matInput id="city" [(ngModel)]="venue.city" name="city" placeholder="City"/>
         </mat-form-field>
         <mat-form-field class="input-spacing">
-          <label for="state">State</label>
-          <input type="text" matInput id="state" [(ngModel)]="venue.state" name="state" />
+
+          <input type="text" matInput id="state" [(ngModel)]="venue.state" name="state" placeholder="State"/>
         </mat-form-field>
         <mat-form-field class="input-spacing">
-          <label for="zip">Zip</label>
-          <input type="text" matInput id="zip" [(ngModel)]="venue.zip" name="zip" />
+
+          <input type="text" matInput id="zip" [(ngModel)]="venue.zip" name="zip" placeholder="ZIP Code"/>
         </mat-form-field>
         <p>
           <button type="submit" mat-stroked-button color="primary" [disabled]="!venueForm.form.valid">Save</button>
