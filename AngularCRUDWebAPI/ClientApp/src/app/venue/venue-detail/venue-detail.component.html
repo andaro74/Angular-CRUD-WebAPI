@@ -1,10 +1,10 @@
-<mat-card>
+<mat-card style="height:100%">
   <mat-card-title>
     <span>{{venue.name}}</span>
   </mat-card-title>
-  <mat-card-content>
-
-      <form (ngSubmit)="onSubmit()" #venueForm="ngForm" >
+    <mat-card-content>
+      <form (ngSubmit)="onSubmit()" #venueForm="ngForm">
+        <input type="hidden" [(ngModel)]="venue.id" name="id" />
         <mat-form-field class="input-spacing">
           <label for="name">Name</label>
           <input type="text" matInput id="name" required [(ngModel)]="venue.name" name="name" />
@@ -41,12 +41,9 @@
           <label for="zip">Zip</label>
           <input type="text" matInput id="zip" [(ngModel)]="venue.zip" name="zip" />
         </mat-form-field>
-        <p class="button-row">
-          <button mat-stroked-button class="btn" (click)="cancel()">Back</button>
+        <p>
           <button type="submit" mat-stroked-button color="primary" [disabled]="!venueForm.form.valid">Save</button>
         </p>
-
       </form>
-
-  </mat-card-content>
-  </mat-card>
+    </mat-card-content>
+</mat-card>

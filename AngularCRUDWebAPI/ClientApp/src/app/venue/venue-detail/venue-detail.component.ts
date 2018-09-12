@@ -12,13 +12,18 @@ import { MaterialModule } from './../../modules/material.module';
 })
 export class VenueDetailComponent implements OnInit {
   venue: IVenue;
+  id:number=0;
   constructor(private service:VenueService, private route:ActivatedRoute, private location:Location) { }
 
   ngOnInit() {
   this.venue=<IVenue>{};
     this.route.params.subscribe(params => {
-      let id = +params['id'];
-      this.getVenue(id);
+      this.id = +params['id'];
+      
+      if (this.id===0){
+      return;
+      }
+      this.getVenue(this.id);
     });
 
   }
@@ -30,10 +35,18 @@ export class VenueDetailComponent implements OnInit {
   }
 
   onSubmit() {
+    if (this.id===0){
+      this.service.createVenue(this.venue).subscribe(venue=> {
+        this.venue = venue;
+        
+      })
+    }else {
+  
     this.service.updateVenue(this.venue).subscribe(venue => {
       console.log("Updated " + venue.id);
       this.venue = venue;
-    })
+    });
+    }
   }
 
   cancel() {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IVenue } from '../models/venue.model';
 import { VenueService } from './venue.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-venue',
@@ -13,7 +14,7 @@ export class VenueComponent implements OnInit {
   
    displayedColumns: string[] = ['id', 'name', 'description', 'select'];
 
-  constructor(private service: VenueService) {
+  constructor(private service: VenueService, private router:Router) {
     //this.venue = {
     //  id: 1,
     //  name: "Hollywood Bowl",
@@ -30,11 +31,19 @@ export class VenueComponent implements OnInit {
     //};
 
   }
+  
+  addNew(){
+    this.router.navigate(['venues/0']);
+  }
 
   ngOnInit() {
     this.service.getVenues().subscribe(venues => {
       this.venues = venues;
     })
+  }
+  
+   cancel() {
+    this.router.navigate(['home']);
   }
 
 }

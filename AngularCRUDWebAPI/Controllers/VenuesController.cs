@@ -79,7 +79,7 @@ namespace AngularCRUDWebAPI.Controllers
 
         public async Task<IActionResult> Post([FromBody] Venue venueItem)
         {
-            return Ok();
+            return Ok(venueItem);
         }
 
         

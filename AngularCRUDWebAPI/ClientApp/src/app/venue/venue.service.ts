@@ -31,5 +31,10 @@ export class VenueService {
     let url = `/api/venues/` + venue.id;
     return this.httpClient.put<IVenue>(url, venue, httpOptions);
   }
+  
+  createVenue(venue: IVenue): Observable<IVenue> {
+    let url = `/api/venues`
+    return this.httpClient.post<IVenue>(url, venue, httpOptions);
+  }
 
 }
