@@ -52,8 +52,6 @@ export class VenueDetailComponent implements OnInit {
     this.location.back();
   }
 
-  cancel() {
-    this.location.back();
-  }
+ 
 
 }

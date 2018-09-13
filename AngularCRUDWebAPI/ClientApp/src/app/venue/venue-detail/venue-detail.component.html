@@ -41,9 +41,10 @@
 
           <input type="text" matInput id="zip" [(ngModel)]="venue.zip" name="zip" placeholder="ZIP Code"/>
         </mat-form-field>
-        <p>
-          <button type="submit" mat-stroked-button color="primary" [disabled]="!venueForm.form.valid">Save</button>
-        </p>
+        <mat-card-actions>
+          <button type="submit" mat-button color="primary" [disabled]="!venueForm.form.valid">Save</button>
+          <a mat-button routerLink="/venues">Cancel</a>
+         </mat-card-actions>
       </form>
     </mat-card-content>
 </mat-card>

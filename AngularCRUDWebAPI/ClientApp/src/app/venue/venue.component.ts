@@ -33,7 +33,7 @@ export class VenueComponent implements OnInit {
   }
   
   addNew(){
-    this.router.navigate(['venues/0']);
+    this.router.navigate(['venue']);
   }
 
   ngOnInit() {

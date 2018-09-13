@@ -6,7 +6,8 @@ import { HomeComponent } from './home/home.component';
 export const routes: Routes = [
   { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'venues', component: VenueComponent },
-  { path: 'venues/:id', component: VenueDetailComponent }
+  { path: 'venues/:id', component: VenueDetailComponent },
+  { path: 'venue', component: VenueDetailComponent }
 ];
 
 export const routing = RouterModule.forRoot(routes);
