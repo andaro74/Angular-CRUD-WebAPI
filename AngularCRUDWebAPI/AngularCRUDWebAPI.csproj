@@ -36,6 +36,7 @@
   <ItemGroup>
     <Folder Include="ClientApp\src\app\services\" />
     <Folder Include="ClientApp\src\app\modules\" />
+    <Folder Include="Infrastructure\Repositories\" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
