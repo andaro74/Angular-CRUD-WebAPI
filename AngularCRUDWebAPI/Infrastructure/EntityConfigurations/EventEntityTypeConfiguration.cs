@@ -15,8 +15,8 @@ namespace AngularCRUDWebAPI.Infrastructure.EntityConfigurations
             builder.HasOne(m => m.Venue).WithMany().HasForeignKey(m => m.VenueId);
             builder.HasOne(m => m.Entertainer).WithMany().HasForeignKey(m => m.EntertainerId);
             builder.HasOne(m => m.Customer).WithMany().HasForeignKey(m => m.CustomerId);
-            builder.Property(m => m.PaidAmount).IsRequired();
-            builder.Property(m => m.TotalAmount).IsRequired();
+            builder.Property(m => m.PaidAmount).HasColumnType("decimal(18,2)").IsRequired();
+            builder.Property(m => m.TotalAmount).HasColumnType("decimal(18,2)").IsRequired();
             builder.Property(m => m.StartDate).IsRequired();
             builder.Property(m => m.EndDate).IsRequired();
         }

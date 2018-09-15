@@ -12,7 +12,7 @@ namespace AngularCRUDWebAPI.Controllers
     {
         // GET: api/values
         [HttpGet]
-        public async Task<List<Entertainer>> Get()
+        public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }

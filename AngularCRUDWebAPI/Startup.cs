@@ -1,10 +1,14 @@
+using AngularCRUDWebAPI.Infrastructure;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Reflection;
 
 namespace AngularCRUDWebAPI
 {
@@ -27,6 +31,19 @@ namespace AngularCRUDWebAPI
             {
                 configuration.RootPath = "ClientApp/dist";
             });
+
+            //Configure Entity Framework
+            services.AddEntityFrameworkSqlServer().AddDbContext<Context>(options =>
+            {
+                options.UseSqlServer(Configuration["ConnectionString"],
+                    sqlServerOptionsAction: sqlOptions =>
+                     {
+                         sqlOptions.MigrationsAssembly(typeof(Startup).GetTypeInfo().Assembly.GetName().Name);
+                         sqlOptions.EnableRetryOnFailure(maxRetryCount: 10, maxRetryDelay: TimeSpan.FromSeconds(30), errorNumbersToAdd: null);
+                     });
+            },
+            ServiceLifetime.Scoped
+            );
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,6 +82,8 @@ namespace AngularCRUDWebAPI
                     spa.UseAngularCliServer(npmScript: "start");
                 }
             });
+
+            
         }
     }
 }

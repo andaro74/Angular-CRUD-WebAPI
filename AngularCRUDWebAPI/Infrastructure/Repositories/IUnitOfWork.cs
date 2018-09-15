@@ -7,6 +7,6 @@ namespace AngularCRUDWebAPI.Infrastructure.Repositories
     public interface IUnitOfWork
     {
         Task<int> SaveChangesAsync(CancellationToken cancellationToken=default(CancellationToken));
-        Task<int> SaveEntitiesAsync(CancellationToken cancellationToken = default(CancellationToken));
+        Task<bool> SaveEntitiesAsync(CancellationToken cancellationToken = default(CancellationToken));
     }
 }
