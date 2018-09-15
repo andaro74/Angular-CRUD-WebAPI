@@ -1,3 +1,4 @@
+using AngularCRUDWebAPI.Filters;
 using AngularCRUDWebAPI.Infrastructure;
 using AngularCRUDWebAPI.Infrastructure.Repositories;
 using AngularCRUDWebAPI.Models;
@@ -26,7 +27,10 @@ namespace AngularCRUDWebAPI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc(options=>
+            {
+                options.Filters.Add(typeof(HttpGlobalExceptionFilter));
+            }).SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

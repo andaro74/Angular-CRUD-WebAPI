@@ -7,7 +7,8 @@ var home_component_1 = require("./home/home.component");
 exports.routes = [
     { path: '', component: home_component_1.HomeComponent, pathMatch: 'full' },
     { path: 'venues', component: venue_component_1.VenueComponent },
-    { path: 'venues/:id', component: venue_detail_component_1.VenueDetailComponent }
+    { path: 'venues/:id', component: venue_detail_component_1.VenueDetailComponent },
+    { path: 'venue', component: venue_detail_component_1.VenueDetailComponent }
 ];
 exports.routing = router_1.RouterModule.forRoot(exports.routes);
 //# sourceMappingURL=app.routes.js.map

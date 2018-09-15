@@ -19,9 +19,8 @@ export class VenueDetailComponent implements OnInit {
   this.venue=<IVenue>{};
     this.route.params.subscribe(params => {
       this.id = +params['id'];
-      
-      if (this.id===0){
-      return;
+      if (!this.id){
+        return;
       }
       this.getVenue(this.id);
     });

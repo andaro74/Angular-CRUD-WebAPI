@@ -9,17 +9,17 @@ namespace AngularCRUDWebAPI.Infrastructure.Repositories
     {
         IUnitOfWork UnitOfWork { get; }
 
-        Task<T> GetAsync(int id);
+        //Task<T> GetAsync(int id);
 
-        Task<IEnumerable<T>> ListAsync();
+        //Task<IEnumerable<T>> ListAsync();
 
-        Task<IEnumerable<T>> ListAsync(Expression<Func<T, bool>> predicate);
+        //Task<IEnumerable<T>> ListAsync(Expression<Func<T, bool>> predicate);
 
-        T Add(T entity);
+        //T Add(T entity);
 
-        T Update(T entity);
+        //T Update(T entity);
 
-        void Delete(T entity);
+        //void Delete(T entity);
 
     }
 }

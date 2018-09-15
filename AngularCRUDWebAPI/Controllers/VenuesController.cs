@@ -1,22 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using AngularCRUDWebAPI.Infrastructure.Repositories;
+﻿using AngularCRUDWebAPI.Infrastructure;
 using AngularCRUDWebAPI.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace AngularCRUDWebAPI.Controllers
 {
     [Route("api/[controller]")]
     public class VenuesController : Controller
     {
-        private List<Venue> venues;
-        readonly IRepository<Venue> repository;
+     
+        private readonly Context context;
 
-        public VenuesController(IRepository<Venue> repository)
+        public VenuesController(Context context)
         {
-            this.repository = repository;
+            this.context = context;
             /*  Venue venue = new Venue
 {
 Id = 1,
@@ -57,36 +56,91 @@ venues = venueList;*/
 
 
         [HttpGet]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
         public async Task<IActionResult> Get()
         {
-            var result= await repository.ListAsync();
+            var result = await context.Venue.ToListAsync();
             return Ok(result);
         }
 
 
         [HttpGet("{id}")]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
         public async Task<IActionResult> Get(int id)
         {
-            //var venue=venues.Where(x => x.Id == id).FirstOrDefault();
+            var venueItem = await context.Venue.FindAsync(id);
 
-            var venue=await repository.GetAsync(id);
-            return Ok(venue);
+            if (venueItem == null)
+            {
+                return NotFound();
+
+            }
+            return Ok(venueItem);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put(int id,[FromBody] Venue venueItem)
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        public async Task<IActionResult> Put(int id,[FromBody] Venue venueItemToUpdate)
         {
-            venueItem.Name += " modified";
-            venueItem.Description += " modified";
+            var venueItem=await context.Venue.SingleOrDefaultAsync(i => i.Id == id);
+            if (venueItem == null)
+            {
+                return NotFound(new { Message = $"Item with id {id} not found" });
+            }
 
+            venueItem = venueItemToUpdate;
+            this.context.Update(venueItem);
+
+            await this.context.SaveChangesAsync();
             return Ok(venueItem);
         }
 
+        [HttpPost]
+        [ProducesResponseType((int)HttpStatusCode.Created)]
         public async Task<IActionResult> Post([FromBody] Venue venueItem)
         {
-            return Ok(venueItem);
+            var item = new Venue
+            {
+                City = venueItem.City,
+                ContactFirstName = venueItem.ContactFirstName,
+                ContactLastName = venueItem.ContactLastName,
+                Country = venueItem.Country,
+                Description = venueItem.Description,
+                Email = venueItem.Email,
+                Name = venueItem.Name,
+                Phone = venueItem.Phone,
+                PhotoUrl = venueItem.PhotoUrl,
+                State = venueItem.State,
+                Street = venueItem.Street,
+                Website = venueItem.Website,
+                Zip = venueItem.Zip
+            };
+            context.Venue.Add(item);
+
+            await context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(Get), new { id = item.Id }, null);
+            
         }
 
+
+        [HttpDelete]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType((int)HttpStatusCode.NoContent)]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var venueItem=await context.Venue.SingleOrDefaultAsync(x => x.Id == id);
+            if (venueItem==null)
+            {
+                return NotFound();
+            }
+
+            context.Venue.Remove(venueItem);
+            await context.SaveChangesAsync();
+            return NoContent();
+        }
         
     }
 }
