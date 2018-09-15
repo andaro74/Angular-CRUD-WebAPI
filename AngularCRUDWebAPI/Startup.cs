@@ -1,4 +1,6 @@
 using AngularCRUDWebAPI.Infrastructure;
+using AngularCRUDWebAPI.Infrastructure.Repositories;
+using AngularCRUDWebAPI.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -44,6 +46,8 @@ namespace AngularCRUDWebAPI
             },
             ServiceLifetime.Scoped
             );
+
+            services.AddScoped<IRepository<Venue>, Repository<Venue>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
