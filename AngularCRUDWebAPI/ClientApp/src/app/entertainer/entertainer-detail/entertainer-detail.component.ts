@@ -22,26 +22,11 @@ export class EntertainerDetailComponent implements OnInit {
     private fb: FormBuilder,
     public snackBar: MatSnackBar) {
 
-    this.entertainer = <IEntertainer>{};
-    this.formGroup = this.fb.group({
-      'businessName': [this.entertainer.businessName, Validators.required],
-      'description': [this.entertainer.description, Validators.required],
-      'website': [this.entertainer.website],
-      'phone': [this.entertainer.phone],
-      'email': [this.entertainer.email, Validators.email],
-      'firstName': [this.entertainer.firstName, Validators.required],
-      'lastName': [this.entertainer.lastName, Validators.required],
-      'photoUrl': [this.entertainer.photoUrl],
-      'street': [this.entertainer.street, Validators.required],
-      'city': [this.entertainer.city, Validators.required],
-      'state': [this.entertainer.state, Validators.required],
-      'zip': [this.entertainer.zip, Validators.required],
-      'country': [this.entertainer.country, Validators.required]
-    });
+    this.formGroup = this.fb.group({       businessName: ['', Validators.required],       description: ['', Validators.required],       website: [''],       phone: ['', Validators.required],       email: ['', Validators.required],       firstName: ['', Validators.required],       lastName: ['', Validators.required],       photoUrl: [''],       street: ['', Validators.required],       city: ['', Validators.required],       state: ['', Validators.required],       zip: ['', Validators.required],       country: ['', Validators.required]     }); 
   }
 
-    ngOnInit() {
-     
+ ngOnInit() {
+
       this.route.params.subscribe(params => {
         this.id = +params['id'];
         if (!this.id) {
@@ -58,23 +43,8 @@ export class EntertainerDetailComponent implements OnInit {
       })
   }
 
-  onSubmit() {
-    this.entertainer = this.formGroup.value;
-
-
-    //this.venue.name = this.venueForm.controls['name'].value;
-    //this.venue.description = this.venueForm.controls['description'].value;
-    //this.venue.website = this.venueForm.controls['website'].value;
-    //this.venue.phone = this.venueForm.controls['phone'].value;
-    //this.venue.email = this.venueForm.controls['email'].value;
-    //this.venue.contactFirstName = this.venueForm.controls['contactFirstName'].value;
-    //this.venue.contactLastName = this.venueForm.controls['contactLastName'].value;
-    //this.venue.photoUrl = this.venueForm.controls['photoUrl'].value;
-    //this.venue.street = this.venueForm.controls['street'].value;
-    //this.venue.city = this.venueForm.controls['city'].value;
-    //this.venue.state = this.venueForm.controls['state'].value;
-    //this.venue.zip = this.venueForm.controls['zip'].value;
-    //this.venue.country = this.venueForm.controls['country'].value;
+  onSubmit(formValue) {
+    this.entertainer = formValue;
 
     if (!this.id) {
       this.service.createEntertainer(this.entertainer).subscribe(entertainer => {

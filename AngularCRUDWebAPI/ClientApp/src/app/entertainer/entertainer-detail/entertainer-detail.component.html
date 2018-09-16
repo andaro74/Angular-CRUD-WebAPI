@@ -4,48 +4,47 @@
   </mat-card-title>
   <mat-card-content>
     <div class="example-container">
-      <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
         <mat-form-field>
-          <input type="text" matInput id="businessName" [formControl]="formGroup.controls['businessName']" name="businessName" placeholder="Business Name" />
-          <mat-error *ngIf="formGroup.controls['businessName'].hasError('required')">Required Field</mat-error>
+          <input type="text" matInput formControlName="businessName" placeholder="Name" />
         </mat-form-field>
         <mat-form-field>
-          <input type="text" matInput id="description" [formControl]="formGroup.controls['description']" name="description" placeholder="Entertainer Description" />
+          <input type="text" matInput formControlName="description" placeholder="Description" />
+         </mat-form-field>
+        <mat-form-field>
+          <input type="text" matInput formControlName="website" placeholder="Website" />
+         </mat-form-field>
+        <mat-form-field>
+          <input type="text" matInput formControlName="firstName" name="FirstName" placeholder="FirstName" />
         </mat-form-field>
         <mat-form-field>
-          <input type="text" matInput id="website" [formControl]="formGroup.controls['website']" name="website" placeholder="Website" />
+          <input type="text" matInput formControlName="lastName" placeholder="LastName" />
         </mat-form-field>
         <mat-form-field>
-          <input type="text" matInput id="contactFirstName" [formControl]="formGroup.controls['FirstName']" name="FirstName" placeholder="FirstName" />
+          <input type="tel" matInput formControlName="phone" placeholder="Phone Number" />
         </mat-form-field>
         <mat-form-field>
-          <input type="text" matInput id="contactLastName" [formControl]="formGroup.controls['LastName']" name="LastName" placeholder="LastName" />
-        </mat-form-field>
-        <mat-form-field>
-          <input type="tel" matInput id="phone" [formControl]="formGroup.controls['phone']" name="phone" placeholder="Phone Number" />
-        </mat-form-field>
-        <mat-form-field>
-          <input type="email" matInput id="email" [formControl]="formGroup.controls['email']" name="email" placeholder="Email" />
-        </mat-form-field>
-        <mat-form-field>
-
-          <input type="text" matInput id="street" [formControl]="formGroup.controls['street']" name="street" placeholder="Street" />
+          <input type="email" matInput formControlName="email" placeholder="Email" />
         </mat-form-field>
         <mat-form-field>
 
-          <input type="text" matInput id="city" [formControl]="formGroup.controls['city']" name="city" placeholder="City" />
+          <input type="text" matInput formControlName="street" placeholder="Street" />
         </mat-form-field>
         <mat-form-field>
 
-          <input type="text" matInput id="state" [formControl]="formGroup.controls['state']" name="state" placeholder="State" />
-        </mat-form-field>
-        <mat-form-field class="input-spacing">
-
-          <input type="text" matInput id="zip" [formControl]="formGroup.controls['zip']" name="zip" placeholder="ZIP Code" />
+          <input type="text" matInput formControlName="city" placeholder="City" />
         </mat-form-field>
         <mat-form-field>
 
-          <input type="text" matInput id="country" [formControl]="formGroup.controls['country']" name="country" placeholder="Country" />
+          <input type="text" matInput formControlName="state" placeholder="State" />
+        </mat-form-field>
+        <mat-form-field >
+
+          <input type="text" matInput formControlName="zip" placeholder="ZIP Code" />
+        </mat-form-field>
+        <mat-form-field>
+
+          <input type="text" matInput formControlName="country" placeholder="Country" />
         </mat-form-field>
         <mat-card-actions>
           <button type="submit" mat-button color="primary" [disabled]="!formGroup.valid">Save</button>

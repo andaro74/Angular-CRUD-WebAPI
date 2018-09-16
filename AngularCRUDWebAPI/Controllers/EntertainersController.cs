@@ -53,6 +53,7 @@ namespace AngularCRUDWebAPI.Controllers
             }
 
             existingItem.City = itemToUpdate.City;
+            existingItem.BusinessName = itemToUpdate.BusinessName;
             existingItem.FirstName = itemToUpdate.FirstName;
             existingItem.LastName = itemToUpdate.LastName;
             existingItem.Country = itemToUpdate.Country;
@@ -79,6 +80,7 @@ namespace AngularCRUDWebAPI.Controllers
             var itemToCreate = new Entertainer
             {
                 City = item.City,
+                BusinessName=item.BusinessName,
                 FirstName = item.FirstName,
                 LastName = item.LastName,
                 Country = item.Country,
