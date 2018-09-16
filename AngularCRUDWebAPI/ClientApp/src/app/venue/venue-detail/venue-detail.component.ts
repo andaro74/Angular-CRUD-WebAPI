@@ -97,7 +97,6 @@ export class VenueDetailComponent implements OnInit {
           this.openSnackBar("Saved", "Success");
       });
     }
-    this.location.back();
   }
 
    openSnackBar(message: string, action: string) {

@@ -59,8 +59,6 @@ export class EntertainerDetailComponent implements OnInit {
           this.openSnackBar("Saved", "Success");
       });
     }
-    
-    //this.location.back();
   }
 
 
