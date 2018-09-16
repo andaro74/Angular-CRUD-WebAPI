@@ -4,7 +4,7 @@
   </mat-card-title>
   <mat-card-content>
     <div class="example-container">
-      <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
         <mat-form-field>
           <input type="text" matInput formControlName="businessName" placeholder="Name" />
         </mat-form-field>

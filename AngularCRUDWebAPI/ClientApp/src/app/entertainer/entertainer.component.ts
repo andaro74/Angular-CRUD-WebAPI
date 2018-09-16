@@ -11,12 +11,16 @@ import { Router } from '@angular/router';
 export class EntertainerComponent implements OnInit {
 
   entertainers: IEntertainer[];
-  displayedColumns: string[] = ['id', 'name', 'description', 'select'];
+    displayedColumns: string[] = ['id', 'name', 'description', 'select'];
+    isWaiting: Boolean = false;
+
   constructor(private service:EntertainerService, private router:Router) { }
 
-  ngOnInit() {
+    ngOnInit() {
+    this.isWaiting = true;
     this.service.getEntertainers().subscribe(entertainers => {
-      this.entertainers = entertainers;
+        this.entertainers = entertainers;
+        this.isWaiting = false;
     })
   }
 
