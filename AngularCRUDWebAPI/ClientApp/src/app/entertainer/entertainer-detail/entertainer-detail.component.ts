@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IEntertainer } from '../../models/entertainer.model';
 import { EntertainerService } from '../entertainer.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { MatSnackBar } from '@angular/material';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
@@ -20,7 +20,8 @@ export class EntertainerDetailComponent implements OnInit {
     private route: ActivatedRoute,
     private location: Location,
     private fb: FormBuilder,
-    public snackBar: MatSnackBar) {
+    public snackBar: MatSnackBar,
+    private router: Router) {
 
     this.formGroup = this.fb.group({       businessName: ['', Validators.required],       description: ['', Validators.required],       website: [''],       phone: ['', Validators.required],       email: ['', Validators.required],       firstName: ['', Validators.required],       lastName: ['', Validators.required],       photoUrl: [''],       street: ['', Validators.required],       city: ['', Validators.required],       state: ['', Validators.required],       zip: ['', Validators.required],       country: ['', Validators.required]     }); 
   }
@@ -48,15 +49,17 @@ export class EntertainerDetailComponent implements OnInit {
 
     if (!this.id) {
       this.service.createEntertainer(this.entertainer).subscribe(entertainer => {
-        this.entertainer = entertainer;
+          this.entertainer = entertainer;
+          this.router.navigate(['entertainers']);
       })
     } else {
       this.service.updateEntertainer(this.id, this.entertainer).subscribe(entertainer => {
         console.log("Updated " + this.id);
-        this.entertainer = entertainer;
+          this.entertainer = entertainer;
+          this.openSnackBar("Saved", "Success");
       });
     }
-    this.openSnackBar("Saved", "Success");
+    
     //this.location.back();
   }
 

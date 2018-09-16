@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { IVenue } from '../../models/venue.model';
 import { VenueService } from '../venue.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-venue-detail',
@@ -15,7 +16,9 @@ export class VenueDetailComponent implements OnInit {
   id: number = 0;
   venueForm: FormGroup; //reprents the form that is displayed.
 
-  constructor(private service: VenueService, private route: ActivatedRoute, private location: Location, private fb: FormBuilder) {
+    constructor(private service: VenueService, private route: ActivatedRoute, 
+        private location: Location, private fb: FormBuilder, private router:Router,
+        public snackBar: MatSnackBar) {
     this.venue = <IVenue>{};
     this.venueForm = fb.group({
       'name': [this.venue.name, Validators.required],
@@ -83,18 +86,24 @@ export class VenueDetailComponent implements OnInit {
   
     if (!this.id) {
       this.service.createVenue(this.venue).subscribe(venue => {
-        this.venue = venue;
+          this.venue = venue;
+          this.router.navigate(['venues']);
       })
     } else
     {
       this.service.updateVenue(this.id, this.venue).subscribe(venue => {
         console.log("Updated " + this.id);
-        this.venue = venue;
+          this.venue = venue;
+          this.openSnackBar("Saved", "Success");
       });
     }
     this.location.back();
   }
 
-
+   openSnackBar(message: string, action: string) {
+    this.snackBar.open(message, action, {
+      duration: 2000,
+    });
+  }
 
 }
