@@ -1,3 +1,36 @@
-<p>
-  customer works!
-</p>
+<mat-card>
+  <mat-card-title>
+    Customers
+  </mat-card-title>
+  <mat-toolbar>
+    <button mat-raised-button (click)="addNew()"><mat-icon>add</mat-icon> Add New</button>
+  </mat-toolbar>
+  <mat-progress-bar mode="query" *ngIf="isWaiting"></mat-progress-bar>
+  <table mat-table [dataSource]="customers" class="mat-elevation-z8">
+    <!-- Id Column -->
+    <ng-container matColumnDef="id">
+      <th mat-header-cell *matHeaderCellDef> Id. </th>
+      <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+    </ng-container>
+    <!-- Name Column -->
+    <ng-container matColumnDef="firstName">
+      <th mat-header-cell *matHeaderCellDef> First Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.firstName}} </td>
+    </ng-container>
+    <!-- Description Column -->
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef> Last Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+    </ng-container>
+    <!-- Select Column -->
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef> Select </th>
+      <td mat-cell *matCellDef="let element"><a routerLink="/entertainers/{{element.id}}">Detail</a></td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</mat-card>
+
+

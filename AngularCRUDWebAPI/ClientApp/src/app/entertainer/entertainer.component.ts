@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
 export class EntertainerComponent implements OnInit {
 
   entertainers: IEntertainer[];
-    displayedColumns: string[] = ['id', 'name', 'description', 'select'];
-    isWaiting: Boolean = false;
+  displayedColumns: string[] = ['id', 'name', 'description', 'select'];
+  isWaiting: Boolean = false;
 
   constructor(private service:EntertainerService, private router:Router) { }
 
