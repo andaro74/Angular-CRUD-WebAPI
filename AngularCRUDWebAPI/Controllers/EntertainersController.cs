@@ -1,45 +1,119 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using AngularCRUDWebAPI.Infrastructure;
 using AngularCRUDWebAPI.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace AngularCRUDWebAPI.Controllers
 {
     [Route("api/[controller]")]
     public class EntertainersController : Controller
     {
-        // GET: api/values
+        private readonly Context context;
+
+        public EntertainersController(Context context)
+        {
+            this.context = context;
+        }
+
         [HttpGet]
-        public IEnumerable<string> Get()
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        public async Task<IActionResult> Get()
         {
-            return new string[] { "value1", "value2" };
+            var result = await context.Entertainer.ToListAsync();
+            return Ok(result);
         }
 
-        // GET api/values/5
+
         [HttpGet("{id}")]
-        public string Get(int id)
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        public async Task<IActionResult> Get(int id)
         {
-            return "value";
+            var existingItem = await context.Entertainer.FindAsync(id);
+
+            if (existingItem == null)
+            {
+                return NotFound();
+
+            }
+            return Ok(existingItem);
         }
 
-        // POST api/values
-        [HttpPost]
-        public void Post([FromBody]Entertainer entertainer)
-        {
-        }
-
-        // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]Entertainer entertainer)
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        public async Task<IActionResult> Put(int id, [FromBody] Entertainer itemToUpdate)
         {
+            var existingItem = await context.Entertainer.SingleOrDefaultAsync((System.Linq.Expressions.Expression<System.Func<Entertainer, bool>>)(i => i.Id == id));
+            if (existingItem == null)
+            {
+                return NotFound(new { Message = $"Item with id {id} not found" });
+            }
+
+            existingItem.City = itemToUpdate.City;
+            existingItem.FirstName = itemToUpdate.FirstName;
+            existingItem.LastName = itemToUpdate.LastName;
+            existingItem.Country = itemToUpdate.Country;
+            existingItem.Description = itemToUpdate.Description;
+            existingItem.Email = itemToUpdate.Email;
+            existingItem.Phone = itemToUpdate.Phone;
+            existingItem.PhotoUrl = itemToUpdate.PhotoUrl;
+            existingItem.State = itemToUpdate.State;
+            existingItem.Street = itemToUpdate.Street;
+            existingItem.Website = itemToUpdate.Website;
+            existingItem.Zip = itemToUpdate.Zip;
+            existingItem.State = itemToUpdate.State;
+
+            this.context.Entertainer.Update((Entertainer)existingItem);
+
+            await this.context.SaveChangesAsync();
+            return Ok(existingItem);
         }
 
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
+        [HttpPost]
+        [ProducesResponseType((int)HttpStatusCode.Created)]
+        public async Task<IActionResult> Post([FromBody] Entertainer item)
         {
+            var itemToCreate = new Entertainer
+            {
+                City = item.City,
+                FirstName = item.FirstName,
+                LastName = item.LastName,
+                Country = item.Country,
+                Description = item.Description,
+                Email = item.Email,
+                Phone = item.Phone,
+                PhotoUrl = item.PhotoUrl,
+                State = item.State,
+                Street = item.Street,
+                Website = item.Website,
+                Zip = item.Zip
+            };
+            context.Entertainer.Add(itemToCreate);
+
+            await context.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(Get), new { id = itemToCreate.Id }, null);
+
+        }
+
+
+        [HttpDelete]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        [ProducesResponseType((int)HttpStatusCode.NoContent)]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var existingItem = await context.Entertainer.SingleOrDefaultAsync((System.Linq.Expressions.Expression<System.Func<Entertainer, bool>>)(x => x.Id == id));
+            if (existingItem == null)
+            {
+                return NotFound();
+            }
+
+            context.Entertainer.Remove(existingItem);
+            await context.SaveChangesAsync();
+            return NoContent();
         }
     }
 }

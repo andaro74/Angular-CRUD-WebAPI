@@ -11,25 +11,11 @@ import { Router } from '@angular/router';
 export class VenueComponent implements OnInit {
 
   public venues: IVenue[];
+  isWaiting: Boolean = false;
   
    displayedColumns: string[] = ['id', 'name', 'description', 'select'];
 
   constructor(private service: VenueService, private router:Router) {
-    //this.venue = {
-    //  id: 1,
-    //  name: "Hollywood Bowl",
-    //  description: "Concert Hall",
-    //  website: "hollywoodbowl.com",
-    //  phone: "(323) 850-2000",
-    //  email: "contact@hollywoodbowl.com",
-    //  street: "2301 N Highland Ave",
-    //  city: "Los Angeles",
-    //  state: "CA",
-    //   zip: "90068",
-    //  country: "USA",
-    //  photoUrl:""
-    //};
-
   }
   
   addNew(){
@@ -37,8 +23,10 @@ export class VenueComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.isWaiting = true;
     this.service.getVenues().subscribe(venues => {
       this.venues = venues;
+      this.isWaiting = false;
     })
   }
   

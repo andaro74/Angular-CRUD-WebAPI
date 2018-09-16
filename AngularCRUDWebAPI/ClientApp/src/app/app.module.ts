@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { VenueModule } from './venue/venue.module';
+import { EntertainerModule } from './entertainer/entertainer.module';
 import { MaterialModule } from './modules/material.module';
 
 
@@ -26,6 +27,7 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
     FormsModule,
     VenueModule,
+    EntertainerModule,
     MaterialModule 
   ],
   providers: [],

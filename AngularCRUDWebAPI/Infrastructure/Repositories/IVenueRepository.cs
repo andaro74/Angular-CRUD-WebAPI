@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace AngularCRUDWebAPI.Infrastructure.Repositories
 {
-    interface IVenueRepository:IRepository<Venue>
+    interface IVenueRepository:IRepository<Entertainer>
     {
 
         Task<Venue> GetAsync(int id);
 
         Task<IEnumerable<Venue>> ListAsync();
-        Task<IEnumerable<Venue>> ListAsync(Expression<Func<Venue, bool>> predicate);
-        Venue Add(Venue entity);
-        Venue Update(Venue entity);
+        Task<IEnumerable<Venue>> ListAsync(Expression<Func<Entertainer, bool>> predicate);
+        Entertainer Add(Venue entity);
+        Entertainer Update(Venue entity);
         void Delete(Venue entity);
     }
 }

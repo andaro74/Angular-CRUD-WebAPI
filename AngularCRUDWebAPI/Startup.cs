@@ -51,7 +51,7 @@ namespace AngularCRUDWebAPI
             ServiceLifetime.Scoped
             );
 
-            services.AddScoped<IRepository<Venue>, Repository<Venue>>();
+            services.AddScoped<IRepository<Entertainer>, Repository<Entertainer>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

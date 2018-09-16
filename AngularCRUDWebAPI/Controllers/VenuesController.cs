@@ -10,7 +10,6 @@ namespace AngularCRUDWebAPI.Controllers
     [Route("api/[controller]")]
     public class VenuesController : Controller
     {
-     
         private readonly Context context;
 
         public VenuesController(Context context)
@@ -47,7 +46,7 @@ namespace AngularCRUDWebAPI.Controllers
         [ProducesResponseType((int)HttpStatusCode.OK)]
         public async Task<IActionResult> Put(int id,[FromBody] Venue venueItemToUpdate)
         {
-            var venueItem=await context.Venue.SingleOrDefaultAsync(i => i.Id == id);
+            var venueItem=await context.Venue.SingleOrDefaultAsync((System.Linq.Expressions.Expression<System.Func<Venue, bool>>)(i => i.Id == id));
             if (venueItem == null)
             {
                 return NotFound(new { Message = $"Item with id {id} not found" });
@@ -68,7 +67,7 @@ namespace AngularCRUDWebAPI.Controllers
             venueItem.Zip = venueItemToUpdate.Zip;
             venueItem.State = venueItemToUpdate.State;
 
-            this.context.Venue.Update(venueItem);
+            this.context.Venue.Update((Venue)venueItem);
 
             await this.context.SaveChangesAsync();
             return Ok(venueItem);
@@ -108,13 +107,13 @@ namespace AngularCRUDWebAPI.Controllers
         [ProducesResponseType((int)HttpStatusCode.NoContent)]
         public async Task<IActionResult> Delete(int id)
         {
-            var venueItem=await context.Venue.SingleOrDefaultAsync(x => x.Id == id);
+            var venueItem=await context.Venue.SingleOrDefaultAsync((System.Linq.Expressions.Expression<System.Func<Venue, bool>>)(x => x.Id == id));
             if (venueItem==null)
             {
                 return NotFound();
             }
 
-            context.Venue.Remove(venueItem);
+            context.Venue.Remove((Venue)venueItem);
             await context.SaveChangesAsync();
             return NoContent();
         }

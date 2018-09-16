@@ -10,14 +10,18 @@
                          [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
               <mat-nav-list>
 
-                  <a mat-list-item [routerLink]='["/"]' >
-                    <i class="material-icons"> home</i>
-                    Home
-                  </a>
-                  <a mat-list-item [routerLink]='["/venues"]' >
-                    <i class="material-icons">location_on</i>
-                   Venues
-                  </a>
+                <a mat-list-item [routerLink]='["/"]'>
+                  <i class="material-icons"> home</i>
+                  Home
+                </a>
+                <a mat-list-item [routerLink]='["/venues"]'>
+                  <i class="material-icons">location_on</i>
+                  Venues
+                </a>
+                <a mat-list-item [routerLink]='["/entertainers"]'>
+                  <i class="material-icons">library_music</i>
+                  Entertainers
+                </a>
 
               </mat-nav-list>
             </mat-sidenav>

@@ -7,23 +7,28 @@
                 <span class='icon-bar'></span>
                 <span class='icon-bar'></span>
             </button>
-            <a class='navbar-brand' [routerLink]='["/"]'>Event Planner</a>
+            <a class='navbar-brand' [routerLink]='["/"]'>Event Planner x</a>
         </div>
         <div class='clearfix'></div>
         <div class='navbar-collapse collapse' [ngClass]='{ "in": isExpanded }'>
-            <ul class='nav navbar-nav'>
-                <li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
-                    <a [routerLink]='["/"]' (click)='collapse()'>
-                        <span class='glyphicon glyphicon-home'></span> Home
-                    </a>
-                </li>
-                <li [routerLinkActive]='["link-active"]'>
-                    <a [routerLink]='["/venues"]' (click)='collapse()'>
-                        <span class='glyphicon glyphicon-education'></span> Venues
-                    </a>
-                </li>
-               
-            </ul>
+          <ul class='nav navbar-nav'>
+            <li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+              <a [routerLink]='["/"]' (click)='collapse()'>
+                <span class='glyphicon glyphicon-home'></span> Home
+              </a>
+            </li>
+            <li [routerLinkActive]='["link-active"]'>
+              <a [routerLink]='["/venues"]' (click)='collapse()'>
+                <span class='glyphicon glyphicon-education'></span> Venues
+              </a>
+            </li>
+            <li [routerLinkActive]='["link-active"]'>
+              <a [routerLink]='["/entertainers"]' (click)='collapse()'>
+                <span class='glyphicon glyphicon-education'></span> Entertainers
+              </a>
+            </li>
+
+          </ul>
         </div>
     </div>
 </div>

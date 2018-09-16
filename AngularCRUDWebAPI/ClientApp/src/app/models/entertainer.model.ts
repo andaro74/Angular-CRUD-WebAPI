@@ -1,6 +1,6 @@
 
 export interface IEntertainer {
-  id: number;
+ // id: number;
   firstname: string;
   lastname: string;
   businessName: string;
