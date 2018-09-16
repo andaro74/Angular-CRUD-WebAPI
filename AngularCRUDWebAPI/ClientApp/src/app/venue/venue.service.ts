@@ -27,8 +27,8 @@ export class VenueService {
     return this.httpClient.get<IVenue>(url);
   }
 
-  updateVenue(venue: IVenue): Observable<IVenue> {
-    let url = `/api/venues/` + venue.id;
+  updateVenue(id: number, venue: IVenue): Observable<IVenue> {
+    let url = `/api/venues/` + id;
     return this.httpClient.put<IVenue>(url, venue, httpOptions);
   }
   

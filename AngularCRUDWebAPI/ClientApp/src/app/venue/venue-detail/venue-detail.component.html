@@ -1,50 +1,58 @@
-<mat-card style="height:100%">
+<mat-card >
   <mat-card-title>
-    <span>{{venue.name}}</span>
+    Venue Item
   </mat-card-title>
-    <mat-card-content>
-      <form (ngSubmit)="onSubmit()" #venueForm="ngForm">
-        <input type="hidden" [(ngModel)]="venue.id" name="id" />
-        <mat-form-field class="input-spacing">
+  <mat-card-content>
+    <div class="example-container">
+      <form [formGroup]="venueForm" (ngSubmit)="onSubmit(venueForm.value)">
+        <mat-form-field>
+          <input type="text" matInput id="name" [formControl]="venueForm.controls['name']" name="name" placeholder="Venue Name" />
+          <mat-error *ngIf="venueForm.controls['name'].hasError('required')">Required Field</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <input type="text" matInput id="description" [formControl]="venueForm.controls['description']" name="description" placeholder="Venue Description" />
+        </mat-form-field>
+        <mat-form-field>
+          <input type="text" matInput id="website" [formControl]="venueForm.controls['website']" name="website" placeholder="Website" />
+        </mat-form-field>
+        <mat-form-field>
+          <input type="text" matInput id="contactFirstName" [formControl]="venueForm.controls['contactFirstName']" name="contactFirstName" placeholder="Contact Info FirstName" />
+        </mat-form-field>
+        <mat-form-field>
+          <input type="text" matInput id="contactLastName" [formControl]="venueForm.controls['contactLastName']" name="contactLastName" placeholder="Contact Info LastName" />
+        </mat-form-field>
+        <mat-form-field>
+          <input type="tel" matInput id="phone" [formControl]="venueForm.controls['phone']" name="phone" placeholder="Phone Number" />
+        </mat-form-field>
+        <mat-form-field>
 
-          <input type="text" matInput id="name" required [(ngModel)]="venue.name" name="name" placeholder="Venue Name" />
+          <input type="email" matInput id="email" [formControl]="venueForm.controls['email']" name="email" placeholder="Email" />
+        </mat-form-field>
+        <mat-form-field>
+
+          <input type="text" matInput id="street" [formControl]="venueForm.controls['street']" name="street" placeholder="Street" />
+        </mat-form-field>
+        <mat-form-field>
+
+          <input type="text" matInput id="city" [formControl]="venueForm.controls['city']" name="city" placeholder="City" />
+        </mat-form-field>
+        <mat-form-field>
+
+          <input type="text" matInput id="state" [formControl]="venueForm.controls['state']" name="state" placeholder="State" />
         </mat-form-field>
         <mat-form-field class="input-spacing">
 
-          <input type="text" matInput id="description" [(ngModel)]="venue.description" name="description" placeholder="Venue Description" />
+          <input type="text" matInput id="zip" [formControl]="venueForm.controls['zip']" name="zip" placeholder="ZIP Code" />
         </mat-form-field>
-        <mat-form-field class="input-spacing">
+        <mat-form-field>
 
-          <input type="text" matInput id="website" [(ngModel)]="venue.website" name="website" placeholder="Website"/>
-        </mat-form-field>
-        <mat-form-field class="input-spacing">
-
-          <input type="text" matInput id="phone" [(ngModel)]="venue.phone" name="phone" placeholder="Phone Number"/>
-        </mat-form-field>
-        <mat-form-field class="input-spacing">
-
-          <input type="text" matInput id="email" [(ngModel)]="venue.email" name="email" placeholder="Email" />
-        </mat-form-field>
-        <mat-form-field class="input-spacing">
-
-          <input type="text" matInput id="street" [(ngModel)]="venue.street" name="street" placeholder="Street"/>
-        </mat-form-field>
-        <mat-form-field class="input-spacing">
-
-          <input type="text" matInput id="city" [(ngModel)]="venue.city" name="city" placeholder="City"/>
-        </mat-form-field>
-        <mat-form-field class="input-spacing">
-
-          <input type="text" matInput id="state" [(ngModel)]="venue.state" name="state" placeholder="State"/>
-        </mat-form-field>
-        <mat-form-field class="input-spacing">
-
-          <input type="text" matInput id="zip" [(ngModel)]="venue.zip" name="zip" placeholder="ZIP Code"/>
+          <input type="text" matInput id="country" [formControl]="venueForm.controls['country']" name="country" placeholder="Country" />
         </mat-form-field>
         <mat-card-actions>
-          <button type="submit" mat-button color="primary" [disabled]="!venueForm.form.valid">Save</button>
+          <button type="submit" mat-button color="primary" [disabled]="!venueForm.valid">Save</button>
           <a mat-button routerLink="/venues">Cancel</a>
-         </mat-card-actions>
+        </mat-card-actions>
       </form>
-    </mat-card-content>
+      </div>
+  </mat-card-content>
 </mat-card>

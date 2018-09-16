@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule, ReactiveFormsModule, FormBuilder } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { VenueComponent } from './venue.component';
 import { VenueService } from './venue.service';
 import { VenueDetailComponent } from './venue-detail/venue-detail.component';
@@ -12,10 +12,19 @@ import { MaterialModule } from './../modules/material.module';
     CommonModule,
     RouterModule,
     FormsModule,
+    //FormBuilder,
+    ReactiveFormsModule,
+    //Validators,
     MaterialModule
   ],
   declarations: [VenueComponent, VenueDetailComponent],
   providers: [VenueService],
-  exports: [RouterModule, FormsModule, MaterialModule]
+  exports: [
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule,
+    //FormBuilder,
+    //Validators,
+    MaterialModule]
 })
 export class VenueModule { }

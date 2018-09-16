@@ -16,45 +16,8 @@ namespace AngularCRUDWebAPI.Controllers
         public VenuesController(Context context)
         {
             this.context = context;
-            /*  Venue venue = new Venue
-{
-Id = 1,
-Name = "Hollywood Bowl",
-Description = "Concert Hall",
-Website = "hollywoodbowl.com",
-Phone = "(323) 850-2000",
-Email = "contact@hollywoodbowl.com",
-Street = "2301 N Highland Ave",
-City = "Los Angeles",
-State = "CA",
-Zip = "90068",
-Country = "USA",
-PhotoUrl = ""
-};
-
-Venue venue2 = new Venue
-{
-Id = 2,
-Name = "Staples Center",
-Description = "Multi-purpose Arena",
-Website = "https://www.staplescenter.com/",
-Phone = "(213) 742-7100",
-Email = "contact@staples.com",
-Street = "1111 S Figueroa St",
-City = "Los Angeles",
-State = "CA",
-Zip = "90014",
-Country = "USA",
-PhotoUrl = ""
-};
-
-var venueList = new List<Venue>();
-venueList.Add(venue);
-venueList.Add(venue2);
-venues = venueList;*/
         }
-
-
+        
         [HttpGet]
         [ProducesResponseType((int)HttpStatusCode.OK)]
         public async Task<IActionResult> Get()
@@ -89,9 +52,23 @@ venues = venueList;*/
             {
                 return NotFound(new { Message = $"Item with id {id} not found" });
             }
+            
+            venueItem.City = venueItemToUpdate.City;
+            venueItem.ContactFirstName = venueItemToUpdate.ContactFirstName;
+            venueItem.ContactLastName = venueItemToUpdate.ContactLastName;
+            venueItem.Country = venueItemToUpdate.Country;
+            venueItem.Description = venueItemToUpdate.Description;
+            venueItem.Email = venueItemToUpdate.Email;
+            venueItem.Name = venueItemToUpdate.Name;
+            venueItem.Phone = venueItemToUpdate.Phone;
+            venueItem.PhotoUrl = venueItemToUpdate.PhotoUrl;
+            venueItem.State = venueItemToUpdate.State;
+            venueItem.Street = venueItemToUpdate.Street;
+            venueItem.Website = venueItemToUpdate.Website;
+            venueItem.Zip = venueItemToUpdate.Zip;
+            venueItem.State = venueItemToUpdate.State;
 
-            venueItem = venueItemToUpdate;
-            this.context.Update(venueItem);
+            this.context.Venue.Update(venueItem);
 
             await this.context.SaveChangesAsync();
             return Ok(venueItem);

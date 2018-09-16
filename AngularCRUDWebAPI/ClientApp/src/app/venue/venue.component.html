@@ -2,7 +2,9 @@
   <mat-card-title>
     Venues  
   </mat-card-title>
-  <button mat-raised-button (click)="addNew()"><mat-icon>add</mat-icon> Add New</button>
+  <mat-toolbar>
+    <button mat-raised-button (click)="addNew()"><mat-icon>add</mat-icon> Add New</button>
+  </mat-toolbar>
   <table mat-table [dataSource]="venues" class="mat-elevation-z8">
 
     <!-- Id Column -->

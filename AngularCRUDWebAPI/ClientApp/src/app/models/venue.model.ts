@@ -1,11 +1,13 @@
 
 export interface IVenue {
-  id: number;
+  //id: number;
   name: string;
   description: string;
   website: string;
   phone: string;
   email: string;
+  contactFirstName: string;
+  contactLastName: string;
   photoUrl: string;
   street: string;
   city: string;
