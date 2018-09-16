@@ -3,7 +3,6 @@ import { IVenue } from '../../models/venue.model';
 import { VenueService } from '../venue.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
-import { MaterialModule } from './../../modules/material.module';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -85,9 +84,6 @@ export class VenueDetailComponent implements OnInit {
     if (!this.id) {
       this.service.createVenue(this.venue).subscribe(venue => {
         this.venue = venue;
-
-      
-
       })
     } else
     {
@@ -95,8 +91,6 @@ export class VenueDetailComponent implements OnInit {
         console.log("Updated " + this.id);
         this.venue = venue;
       });
-
-
     }
     this.location.back();
   }

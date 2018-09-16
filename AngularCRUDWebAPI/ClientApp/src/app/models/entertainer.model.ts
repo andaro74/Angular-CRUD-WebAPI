@@ -1,13 +1,13 @@
 
 export interface IEntertainer {
  // id: number;
-  firstname: string;
-  lastname: string;
+  firstName: string;
+  lastName: string;
   businessName: string;
   website: string;
   phone: string;
   email: string;
-  photourl: string;
+  photoUrl: string;
   description: string;
   street: string;
   city: string;
