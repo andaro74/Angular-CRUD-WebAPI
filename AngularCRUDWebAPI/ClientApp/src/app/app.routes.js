@@ -7,6 +7,8 @@ var entertainer_detail_component_1 = require("./entertainer/entertainer-detail/e
 var entertainer_component_1 = require("./entertainer/entertainer.component");
 var customer_detail_component_1 = require("./customer/customer-detail/customer-detail.component");
 var customer_component_1 = require("./customer/customer.component");
+var event_detail_component_1 = require("./event/event-detail/event-detail.component");
+var event_component_1 = require("./event/event.component");
 var home_component_1 = require("./home/home.component");
 exports.routes = [
     { path: '', component: home_component_1.HomeComponent, pathMatch: 'full' },
@@ -18,7 +20,10 @@ exports.routes = [
     { path: 'entertainer', component: entertainer_detail_component_1.EntertainerDetailComponent },
     { path: 'customers', component: customer_component_1.CustomerComponent },
     { path: 'customers/:id', component: customer_detail_component_1.CustomerDetailComponent },
-    { path: 'customer', component: customer_detail_component_1.CustomerDetailComponent }
+    { path: 'customer', component: customer_detail_component_1.CustomerDetailComponent },
+    { path: 'events', component: event_component_1.EventComponent },
+    { path: 'events/:id', component: event_detail_component_1.EventDetailComponent },
+    { path: 'event', component: event_detail_component_1.EventDetailComponent }
 ];
 exports.routing = router_1.RouterModule.forRoot(exports.routes);
 //# sourceMappingURL=app.routes.js.map

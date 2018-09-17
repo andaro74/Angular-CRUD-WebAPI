@@ -5,6 +5,8 @@ import { EntertainerDetailComponent } from './entertainer/entertainer-detail/ent
 import { EntertainerComponent } from './entertainer/entertainer.component';
 import { CustomerDetailComponent } from './customer/customer-detail/customer-detail.component';
 import { CustomerComponent } from './customer/customer.component';
+import { EventDetailComponent } from './event/event-detail/event-detail.component';
+import { EventComponent } from './event/event.component';
 import { HomeComponent } from './home/home.component';
 
 export const routes: Routes = [
@@ -17,7 +19,10 @@ export const routes: Routes = [
   { path: 'entertainer', component: EntertainerDetailComponent },
   { path: 'customers', component: CustomerComponent },
   { path: 'customers/:id', component: CustomerDetailComponent },
-  { path: 'customer', component: CustomerDetailComponent }
+  { path: 'customer', component: CustomerDetailComponent },
+  { path: 'events', component: EventComponent },
+  { path: 'events/:id', component: EventDetailComponent },
+  { path: 'event', component: EventDetailComponent }
 ];
 
 export const routing = RouterModule.forRoot(routes);

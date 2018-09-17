@@ -1,3 +1,64 @@
-<p>
-  event-detail works!
-</p>
+<mat-card>
+  <mat-card-title>
+    Event Item
+  </mat-card-title>
+  <mat-card-content>
+    <div class="example-container">
+      <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
+        <mat-form-field>
+          <input type="text" matInput formControlName="name" placeholder="Name" />
+        </mat-form-field>
+        <mat-form-field>
+          <input type="text" matInput formControlName="description" placeholder="Description" />
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="startDate" placeholder="Choose a start date">
+          <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+          <mat-datepicker #startDate></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="endDate" placeholder="Choose an end date">
+          <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+          <mat-datepicker #endDate></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select placeholder="Venue" formControlName="venues">
+            <mat-option *ngFor="let venue of venues" [value]="venue.id">
+              {{venue.name}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-select placeholder="Entertainer" formControlName="entertainers">
+            <mat-option *ngFor="let entertainer of entertainers" [value]="entertainer.id">
+              {{entertainer.businessName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-select placeholder="Customer" formControlName="customers">
+            <mat-option *ngFor="let customer of customers" [value]="customer.id">
+              {{customer.firstName}} {{customer.lastName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+        <mat-form-field>
+          <input type="text" matInput formControlName="paidAmount" placeholder="Paid Amount" />
+        </mat-form-field>
+        <mat-form-field>
+          <input type="text" matInput formControlName="totalAmount" placeholder="Total Amount" />
+        </mat-form-field>
+       
+        <mat-card-actions>
+          <button type="submit" mat-button color="primary" [disabled]="!formGroup.valid">Save</button>
+          <a mat-button routerLink="/entertainers">Cancel</a>
+        </mat-card-actions>
+      </form>
+    </div>
+  </mat-card-content>
+</mat-card>
+

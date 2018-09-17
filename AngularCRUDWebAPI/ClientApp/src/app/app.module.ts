@@ -6,6 +6,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { VenueModule } from './venue/venue.module';
 import { EntertainerModule } from './entertainer/entertainer.module';
 import { CustomerModule } from './customer/customer.module';
+import { EventModule } from './event/event.module';
 import { MaterialModule } from './modules/material.module';
 import { routing } from './app.routes';
 import { AppComponent } from './app.component';
@@ -28,6 +29,7 @@ import { HomeComponent } from './home/home.component';
     VenueModule,
     EntertainerModule,
     CustomerModule,
+    EventModule,
     MaterialModule 
   ],
   providers: [],
