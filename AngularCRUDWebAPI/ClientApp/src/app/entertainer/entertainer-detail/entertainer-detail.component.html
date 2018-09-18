@@ -12,7 +12,7 @@
           <input type="text" matInput formControlName="description" placeholder="Description" />
          </mat-form-field>
         <mat-form-field>
-          <input type="text" matInput formControlName="website" placeholder="Website" />
+          <input type="url" matInput formControlName="website" placeholder="Website" />
          </mat-form-field>
         <mat-form-field>
           <input type="text" matInput formControlName="firstName" name="FirstName" placeholder="FirstName" />
@@ -40,7 +40,7 @@
         </mat-form-field>
         <mat-form-field >
 
-          <input type="text" matInput formControlName="zip" placeholder="ZIP Code" />
+          <input type="number" matInput formControlName="zip" placeholder="ZIP Code" />
         </mat-form-field>
         <mat-form-field>
 
@@ -48,7 +48,7 @@
         </mat-form-field>
         <mat-card-actions>
           <button type="submit" mat-button color="primary" [disabled]="!formGroup.valid">Save</button>
-          <a mat-button routerLink="/entertainers">Cancel</a>
+          <a mat-button routerLink="/entertainers">Return</a>
         </mat-card-actions>
       </form>
     </div>

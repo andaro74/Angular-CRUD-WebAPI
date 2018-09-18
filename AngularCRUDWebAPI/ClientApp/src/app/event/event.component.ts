@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class EventComponent implements OnInit {
   events: IEvent[];
-  public displayedColumns: string[] = ['id', 'name', 'startDate', 'customerId', 'select']
+  public displayedColumns: string[] = ['id', 'name', 'description', 'startDate', 'totalAmount', 'select']
   isWaiting: Boolean = false;
   constructor(private service:EventService, private router:Router) { }
 

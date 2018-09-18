@@ -13,7 +13,7 @@
           <input type="text" matInput id="description" [formControl]="venueForm.controls['description']" name="description" placeholder="Venue Description" />
         </mat-form-field>
         <mat-form-field>
-          <input type="text" matInput id="website" [formControl]="venueForm.controls['website']" name="website" placeholder="Website" />
+          <input type="url" matInput id="website" [formControl]="venueForm.controls['website']" name="website" placeholder="Website" />
         </mat-form-field>
         <mat-form-field>
           <input type="text" matInput id="contactFirstName" [formControl]="venueForm.controls['contactFirstName']" name="contactFirstName" placeholder="Contact Info FirstName" />
@@ -42,7 +42,7 @@
         </mat-form-field>
         <mat-form-field class="input-spacing">
 
-          <input type="text" matInput id="zip" [formControl]="venueForm.controls['zip']" name="zip" placeholder="ZIP Code" />
+          <input type="number" matInput id="zip" [formControl]="venueForm.controls['zip']" name="zip" placeholder="ZIP Code" />
         </mat-form-field>
         <mat-form-field>
 
@@ -50,7 +50,7 @@
         </mat-form-field>
         <mat-card-actions>
           <button type="submit" mat-button color="primary" [disabled]="!venueForm.valid">Save</button>
-          <a mat-button routerLink="/venues">Cancel</a>
+          <a mat-button routerLink="/venues">Return</a>
         </mat-card-actions>
       </form>
       </div>
