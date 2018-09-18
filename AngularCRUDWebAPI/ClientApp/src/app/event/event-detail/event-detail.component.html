@@ -2,8 +2,10 @@
   <mat-card-title>
     Event Item
   </mat-card-title>
+  <mat-progress-bar mode="query" *ngIf="isWaiting"></mat-progress-bar>
   <mat-card-content>
     <div class="example-container">
+
       <form [formGroup]="formGroup" (ngSubmit)="onSubmit(formGroup.value)">
         <mat-form-field>
           <input type="text" matInput formControlName="name" placeholder="Name" />
@@ -12,7 +14,7 @@
           <input type="text" matInput formControlName="description" placeholder="Description" />
         </mat-form-field>
         <mat-form-field>
-          <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="startDate"  formControlName="startDate"  placeholder="Choose a start date">
+          <input matInput [min]="minDate" [max]="maxDate" [matDatepicker]="startDate" formControlName="startDate" placeholder="Choose a start date">
           <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
           <mat-datepicker #startDate></mat-datepicker>
         </mat-form-field>
@@ -34,7 +36,6 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-
         <mat-form-field>
           <mat-select placeholder="Entertainer" formControlName="entertainerId">
             <mat-option *ngFor="let entertainer of entertainers" [value]="entertainer.id">
@@ -42,7 +43,6 @@
             </mat-option>
           </mat-select>
         </mat-form-field>
-
         <mat-form-field>
           <mat-select placeholder="Customer" formControlName="customerId">
             <mat-option *ngFor="let customer of customers" [value]="customer.id">
@@ -51,14 +51,12 @@
           </mat-select>
         </mat-form-field>
 
-
         <mat-form-field>
           <input type="number" matInput formControlName="paidAmount" placeholder="Paid Amount" />
         </mat-form-field>
         <mat-form-field>
           <input type="number" matInput formControlName="totalAmount" placeholder="Total Amount" />
         </mat-form-field>
-       
 
 
         <mat-card-actions>

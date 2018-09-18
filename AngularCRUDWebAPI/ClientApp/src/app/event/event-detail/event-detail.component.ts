@@ -11,6 +11,7 @@ import { EntertainerService } from '../../entertainer/entertainer.service';
 import { IEntertainer } from '../../models/entertainer.model';
 import { ICustomer } from '../../models/customer.model';
 import { CustomerService } from '../../customer/customer.service';
+import { Local } from '../../../../node_modules/protractor/built/driverProviders';
 
 @Component({
   selector: 'app-event-detail',
@@ -26,6 +27,7 @@ export class EventDetailComponent implements OnInit {
   formGroup: FormGroup;
   minDate = new Date();
   maxDate = new Date(2020, 0, 1);
+  isWaiting: Boolean = false;
 
   constructor(private eventService: EventService,
     private venueService: VenueService,
@@ -45,16 +47,16 @@ export class EventDetailComponent implements OnInit {
       photoUrl: [''],
       endDate: [new Date(), Validators.required],
       endTime: ['12:30', Validators.required],
-      venueId: [''],
-      entertainerId: [''],
-      customerId: [''],
+      venueId: ['', Validators.required],
+      entertainerId: ['', Validators.required],
+      customerId: ['', Validators.required],
       paidAmount: ['0', Validators.required],
       totalAmount: ['0', Validators.required]
       });
   }
 
   ngOnInit() {
-
+    this.isWaiting=true;
     this.venueService.getVenues().subscribe(venues => {
       this.venues = venues;
     });
@@ -69,7 +71,8 @@ export class EventDetailComponent implements OnInit {
 
     this.route.params.subscribe(params => {
       this.id = +params['id'];
-      if (!this.id) {
+        if (!this.id) {
+        this.isWaiting=false;
         return;
       }
       this.getEvent(this.id);
@@ -80,14 +83,13 @@ export class EventDetailComponent implements OnInit {
     this.eventService.getEvent(id).subscribe(event => {
       this.event = event;
 
-      //var startTimeString = event.startDate.toLocaleTimeString();
-      //var endTimeString = event.endDate.toLocaleTimeString();
       this.formGroup.patchValue(this.event);
-      //this.formGroup.controls["startTime"].setValue("15:36");
+      var startHourMinutes=this.getTimeFromDate(event.startDate);
+      this.formGroup.controls["startTime"].setValue(startHourMinutes);
 
-
-    
-
+      var endHourMinutes=this.getTimeFromDate(event.endDate);
+        this.formGroup.controls["endTime"].setValue(endHourMinutes);
+        this.isWaiting=false;
     });
   }
   
@@ -112,16 +114,36 @@ export class EventDetailComponent implements OnInit {
     }
   }
 
+ updateDateWithTime(timeValue:string, dateValue:String):Date {
+        
+    var timeComponents=timeValue.split(":");
+    var hour=+timeComponents[0];
+     var indexOfColon=dateValue.toString().indexOf(':');
 
-  updateDateWithTime(timeValue:string, dateToModify:Date) {
-    var timeSplit = timeValue.split(":");
-    var timeHour =  +timeSplit[0];
-    var timeMinutes = +timeSplit[1];
-    var modDate = dateToModify;
-    modDate.setHours(timeHour);
-    modDate.setMinutes(timeMinutes);
-    return modDate;
-  }
+     var firstPartDate=dateValue.toString().substring(0,indexOfColon-2);
+     var secondPartDate=dateValue.toString().substring(indexOfColon+3);
+
+
+    var modDate= firstPartDate + timeValue + secondPartDate;
+    return new Date(modDate);
+}
+
+ getTimeFromDate(dateValue: Date):String {
+
+    var dateTimeValue=new Date(dateValue);
+    var timeOffsetInHR:number = dateTimeValue.getTimezoneOffset() / 60;
+
+     var indexOfT=dateValue.toString().indexOf('T');
+     var hourMinutes= dateValue.toString().substr(indexOfT+1);
+
+     var localHour=+hourMinutes.substring(0,2) - timeOffsetInHR;
+     if (localHour < 0) {
+         localHour=24+localHour;
+     }
+
+     hourMinutes=localHour.toString().padStart(2, "0") + hourMinutes.substring(2);
+     return hourMinutes;
+   }
 
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {
