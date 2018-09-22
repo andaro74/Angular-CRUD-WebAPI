@@ -1,11 +1,10 @@
-# Angular 6 + Angular Material + CRUD + .Net Core WebAPI
-I wanted to create a sample application to use as a reference on implementations with Angular + Web API backend and EF Core using the Visual Studio Angular Template.
+# Application Sample for Angular 6 + Angular Material + .Net Core + EF
+When I started developing Single Page Applications I would’ve liked to have a basic working implementation that demonstrated Angular 6, .NET Core, EF Core and Angular Material in an application.
+After working in a couple of projects I decided to create one to use as a reference for my own projects.
 
-I’ve been working with Angular and .NET Core for some time and I find them a very good match to each other. I also wanted to use Angular Material to design the user interface since there are already implementations with Bootstrap. 
-The purpose of this tutorial is to have a sample implementation to use as a reference for your own projects. 
 
 ## Case Scenario:
-We are an event company that provides customers with customized events for their parties. We have a basic Web application to create and manage events. The idea is to have a database with venues, entertainers, customers and aggregate into events.
+The fictious company organize private events for their customers.  An event is made up of venues, entertainers and customer information. 
 
 ## Application Walkthrough
 
