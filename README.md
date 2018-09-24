@@ -1,4 +1,7 @@
 # Angular 6 + .Net Core Event Planner
+
+[Visit my blog](https://medium.com/@andaro74/angular-6-net-core-event-planner-494703bcd17f)
+
 In my latest project I’ve used Angular 6 and .Net Core so I wanted to create a working implementation to demonstrate the following technologies working together. 
 
 * [Angular 6](https://angular.io/)
@@ -75,7 +78,7 @@ Continuous integration and delivery deserves its own post. However, I wanted to 
 
 ## Conclusion
 
-I hope you enjoyed this post. Please leave me any feedback or any question you have so I can answer it or provide additional information. Visit my blog to add comments.  
+I hope you enjoyed this post. Please leave me any feedback or any question you have so I can answer it or provide additional information. Visit [my blog](https://medium.com/@andaro74/angular-6-net-core-event-planner-494703bcd17f) to add comments.  
 
 
 
