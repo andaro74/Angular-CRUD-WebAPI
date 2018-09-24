@@ -29,7 +29,6 @@ Entity Framework Core uses data migrations to create the database tables and upd
 
 After getting the code execute the following commands:
 
-
 PowerShell
 
 ```powershell
@@ -58,9 +57,15 @@ List of events that the user assembled by creating a new event and selecting a v
 ![Events](https://andarito.blob.core.windows.net/github/gihub/AngularCRUD/EventsPage.JPG)
 
 ## Event Detail
+
+Detail information about an event. This a [reactive form](https://angular.io/guide/reactive-forms) that has some required fields along with angular material controls such as the calendar that enables users to have a very smooth navigation. Notice after saving data either when editing the event there is a snack bottom bar that notifies the user of a successful operation.
+
 ![Event Detail](https://andarito.blob.core.windows.net/github/gihub/AngularCRUD/EventsDetailsPage.JPG)
 
 ## Entertainers
+
+List of entertainers that previously needed to be added before creating an event. The same goes for Venues and Customers.
+
 ![Entertaniers](https://andarito.blob.core.windows.net/github/gihub/AngularCRUD/Entertainers.JPG)
 
 ## Azure CI/CD Results
